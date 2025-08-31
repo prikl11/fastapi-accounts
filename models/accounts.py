@@ -1,3 +1,4 @@
+from sqlalchemy.orm import relationship
 from database import Base
 from sqlalchemy import Column, Integer, ForeignKey, DECIMAL
 
@@ -7,3 +8,6 @@ class Accounts(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'), index=True)
     balance = Column(DECIMAL, default=0)
+
+    user = relationship("User", back_populates="accounts")
+    # transactions = relationship("Transaction", back_populates="account")
