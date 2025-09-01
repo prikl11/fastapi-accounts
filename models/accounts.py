@@ -9,5 +9,5 @@ class Accounts(Base):
     user_id = Column(Integer, ForeignKey('users.id'), index=True)
     balance = Column(DECIMAL, default=0)
 
-    user = relationship("User", back_populates="accounts")
+    user = relationship("Users", back_populates="accounts")
     # transactions = relationship("Transaction", back_populates="account")
