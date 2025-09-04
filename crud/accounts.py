@@ -1,3 +1,4 @@
+from decimal import Decimal
 from fastapi import HTTPException
 from schemas import AccountCreate, AccountUpdate
 from models import Accounts
@@ -42,17 +43,3 @@ def delete_account(db: Session, account_id: int):
     db.delete(account)
     db.commit()
     return {"message": "Account deleted"}
-
-def transfer(db: Session, account_id: int, amount: int, sign: str):
-    account = db.query(Accounts).filter(Accounts.id == account_id).first()
-    if not account:
-        raise HTTPException(status_code=404, detail="Account not found")
-
-    if sign == "+":
-        account.balance += amount
-    if sign == "-":
-        account.balance -= amount
-
-    db.commit()
-    db.refresh(account)
-    return {"current balance": account.balance}
