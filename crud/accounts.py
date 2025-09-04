@@ -28,7 +28,7 @@ def update_account(db: Session, account_id: int, account: AccountUpdate):
     if account.user_id is not None:
         existing_account.user_id = account.user_id
     if account.balance is not None:
-        existing_account.balance = account.balance
+        existing_account.balance = Decimal(account.balance)
 
     db.commit()
     db.refresh(existing_account)
