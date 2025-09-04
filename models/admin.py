@@ -8,4 +8,4 @@ class Admin(Base):
     user_id = Column(Integer, ForeignKey("users.id"), index=True)
     email = Column(String, unique=True, index=True)
     full_name = Column(String(50), index=True)
-    hashed_password = Column(Text, index=True)
+    hashed_password = Column(Text)
