@@ -1,5 +1,5 @@
 from . import SessionDep
-from crud import create_account, read_account, update_account, delete_account, read_accounts, transfer
+from crud import create_account, read_account, update_account, delete_account, read_accounts
 from fastapi import APIRouter
 from schemas import AccountOut, AccountCreate, AccountUpdate
 
@@ -24,7 +24,3 @@ def update_account_route(db: SessionDep, account_id: int, account: AccountUpdate
 @router.delete("/accounts/{account_id}", response_model=AccountOut)
 def delete_account_route(db: SessionDep, account_id: int):
     return delete_account(db, account_id)
-
-@router.patch("/accounts/{account_id}", response_model=AccountOut)
-def transfer_route(db: SessionDep, account_id: int, amount: int, sign: str):
-    return transfer(db, account_id, amount, sign)
