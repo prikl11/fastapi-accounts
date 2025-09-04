@@ -10,4 +10,4 @@ class Accounts(Base):
     balance = Column(DECIMAL, default=0)
 
     user = relationship("Users", back_populates="accounts")
-    # transactions = relationship("Transaction", back_populates="account")
+    transactions = relationship("Transaction", back_populates="account")

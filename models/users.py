@@ -10,5 +10,5 @@ class Users(Base):
     full_name = Column(String(50), index=True)
     hashed_password = Column(Text)
 
-    accounts = relationship("Account", back_populates="user")
-    # transactions = relationship("Transaction", back_populates="user")
+    accounts = relationship("Accounts", back_populates="user")
+    transactions = relationship("Transaction", back_populates="user")
